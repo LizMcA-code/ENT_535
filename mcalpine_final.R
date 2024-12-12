@@ -37,7 +37,7 @@ colnames(ten)[24] = "LST_stdev"
 ### Question: is there a difference between treatment temperatures in stand types? 
 ## ANOVA assumptions 
 
-# 1. observations are independant (assumed)
+# 1. observations are independent (assumed)
 
 # 2. data are normally distributed 
 hist(two$LST_mean) # these look abnormal but check QQ plot 
@@ -73,11 +73,12 @@ kruskal.test(LST_mean ~ treatment, data = ten) #yikes.
 ggplot(data = two, aes(x = treatment, y = LST_mean)) +
   geom_boxplot()
 
+# plot 2010 - 2024 data
 ggplot(data = ten, aes(x = treatment, y = LST_mean)) +
   geom_boxplot()
 
 # this doesn't really tell us much but let's make it fancy anyway
-# 2000 - 2024
+# 2000 - 2010
 ggplot(data = two, aes(x = treatment, y = LST_mean, fill = treatment)) +
   geom_boxplot() +
   labs(
@@ -90,12 +91,12 @@ ggplot(data = two, aes(x = treatment, y = LST_mean, fill = treatment)) +
     plot.title = element_text(color = "black", size = 16, face = "bold", hjust = 0.5),
     plot.subtitle = element_text(face = "bold.italic", hjust = 0.5))
   
-
+# 2010 - 2024
 ggplot(data = ten, aes(x = treatment, y = LST_mean, fill = treatment)) +
   geom_boxplot() +
   labs(
     title = "Land Surface Temperature by Stand Type",
-    subtitle = "2010 - 2020",
+    subtitle = "2010 - 2024",
     x = "Stand Treatment",
     y = "Land Surface Temperature (C)",
     fill = "Stand Treatment") +
@@ -162,8 +163,8 @@ ggplot(data = jun, aes(x = treatment, y = mean_temp, fill = treatment)) +
 # Numbers 
 st1 =sd(jun_sub$mean_temp) # standard deviation in animal locations 
 st2 =sd(new$mean_temp) # standard deviation in control points 
-mn1 = mean(jun_sub$mean_temp)
-mn2 = mean(new$mean_temp)
+mn1 = mean(jun_sub$mean_temp) # mean in animal locations 
+mn2 = mean(new$mean_temp) #mean in control locations 
 
 st1
 st2
